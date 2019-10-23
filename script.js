@@ -53,29 +53,24 @@ let counter = 1;
 const ul = document.createElement("ul");
 const button = document.querySelector(".button");
 button.addEventListener("click", insertLiItem);
+document.body.appendChild(ul);
 
 function insertLiItem(e) {
   let li = document.createElement("li");
   li.innerText = "This is list item " + counter;
   li.className = "list";
   ul.appendChild(li);
-  document.body.appendChild(ul);
   counter++;
 
-  const list = document.querySelectorAll("li");
-  list.forEach(li => {
-    li.addEventListener("click", () => {
-      li.style.color = colors[i];
-      console.log(i);
-      i++;
-      if (i >= 6) {
-        i = 0;
-      }
-    });
-
-    li.addEventListener("dblclick", () => {
-      li.parentNode.removeChild(li);
-    });
+  li.addEventListener("click", () => {
+    li.style.color = colors[i];
+    i++;
+    if (i >= 6) {
+      i = 0;
+    }
   });
-  console.log(list);
+
+  li.addEventListener("dblclick", () => {
+    li.parentNode.removeChild(li);
+  });
 }
